@@ -1,0 +1,14 @@
+---
+# tasks file for shosts
+
+- name: Deploy shost configuration
+  when: root_shosts is defined  and root_shosts|length > 0
+  ansible.builtin.template:
+    src: "shosts.j2"
+    dest: "/root/.shosts"
+    owner: root
+    group: root
+    force: true
+    mode: 0644
+    backup: true
+  with_items: "{{ root_shosts }}"

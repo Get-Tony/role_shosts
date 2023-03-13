@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+{% for item in root_shosts %}
+{% for uname in root_shosts[item] %}
+{{ item }} {{ uname }}
+{% endfor %}
+{% endfor %}
